@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Para o Amor da Minha Vida</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffd1dc, #ffe5ec);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #d6336c;
+      margin-top: 40px;
+    }
+
+    #heart {
+      outline: none;
+      font-size: 100px;
+      cursor: pointer;
+      transition: transform 0.1s;
+      margin: 30px 0;
+    }
+
+    #heart:focus { outline: none; }
+    #heart:active {
+      transform: scale(1.2);
+    }
+
+    #score {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    #message {
+      font-size: 20px;
+      color: #6a1b4d;
+      margin-top: 20px;
+      min-height: 40px;
+      padding: 0 20px;
+    }
+
+    iframe {
+      display: none; /* Música tocando em segundo plano */
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    #poem {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333;
+      display: none;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Te amo, Helena Alice!</h1>
+
+  <div id="heart">❤️</div>
+  <div id="score">Cliques: 0</div>
+  <div id="message"></div>
+  <div id="poem"></div>
+
+  <!-- Música de fundo -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/Oextk-If8HQ?autoplay=1&loop=1&playlist=Oextk-If8HQ"
+    frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+  <div class="footer">Feito com muito amor por você</div>
+
+  <script>
+    let score = 0;
+    const heart = document.getElementById("heart");
+    const scoreDisplay = document.getElementById("score");
+    const messageDisplay = document.getElementById("message");
+    const poemDisplay = document.getElementById("poem");
+
+    const mensagens = [
+      "Você é o amor da minha vida!",
+      "Cada clique é um beijo meu.",
+      "Não canso de te amar!",
+      "Você é perfeita!",
+      "Eu sempre estarei com você.",
+      "Nosso amor é infinito!",
+      "Seu sorriso muda meu mundo.",
+      "Com você tudo faz sentido.",
+      "A gente é pra sempre, tá bom?",
+      "Esse joguinho é só um símbolo do quanto te amo.",
+      "Você deixa meu coração quentinho.",
+      "Helena Alice, você é meu lar.",
+      "Quando penso em você, eu sorrio sem perceber.",
+      "Obrigado por existir na minha vida.",
+      "Estar com você é o melhor presente.",
+      "Te amar é fácil, natural e eterno.",
+      "Quero passar cada segundo ao seu lado.",
+      "Você é minha inspiração diária.",
+      "Nenhuma distância muda o que sinto por você.",
+      "Você faz meu mundo mais bonito."
+    ];
+
+    const poema = `
+Te amo não só pelo que és,
+Mas por quem sou quando estou contigo.
+
+Te amo por fazer brotar em mim
+Um amor que transborda e vive.
+
+Te amo nas coisas simples,
+E nos momentos infinitos que criamos juntos.`;
+
+    heart.addEventListener("click", () => {
+      score++;
+      scoreDisplay.textContent = `Cliques: ${score}`;
+      
+      if (score % 10 === 0 && score <= 200) {
+        const msg = mensagens[(score / 10 - 1) % mensagens.length];
+        messageDisplay.textContent = msg;
+      }
+
+      if (score === 100) {
+        poemDisplay.style.display = "block";
+        poemDisplay.textContent = poema;
+      }
+
+      if (score === 200) {
+        messageDisplay.textContent = "Pode apertar, meu amor é infinito.";
+      }
+    });
+  </script>
+</body>
+</html>
